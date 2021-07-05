@@ -1078,8 +1078,8 @@ private:
     void enableHalVirtualDisplays(bool);
 
     // Virtual display lifecycle for ID generation and HAL allocation.
-    VirtualDisplayId acquireVirtualDisplay(ui::Size, ui::PixelFormat, const std::string& uniqueId)
-            REQUIRES(mStateLock);
+    VirtualDisplayId acquireVirtualDisplay(ui::Size, ui::PixelFormat, const std::string& uniqueId,
+            bool canAllocateHwcForVDS) REQUIRES(mStateLock);
     template <typename ID>
     void acquireVirtualDisplaySnapshot(ID displayId, const std::string& uniqueId) {
         std::lock_guard lock(mVirtualDisplaysMutex);
